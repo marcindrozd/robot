@@ -26,9 +26,11 @@ def move
 end
 
 def left
+  a[(a.index("n") - 1) % a.length]
 end
 
 def right
+  a[(a.index("w") + 1) % a.length]
 end
 
 def report
