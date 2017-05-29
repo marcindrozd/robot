@@ -47,13 +47,12 @@ def right
 end
 
 def report
-  [@x, @y, @facing].join(",")
+  puts [@x, @y, @facing].join(",")
 end
 
 def robot_outside_the_grid?(x, y)
   x < MIN_X || x > MAX_X || y < MIN_Y || y > MAX_Y
 end
-
 
 # ---------------------
 # TEST DATA
@@ -88,5 +87,5 @@ if __FILE__ == $0
   move
 
   puts "Reporting position..."
-  puts report
+  report
 end

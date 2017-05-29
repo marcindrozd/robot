@@ -43,7 +43,7 @@ describe RobotV2 do
     it "reports the position of robot" do
       @robot.place(3, 1, SOUTH)
 
-      @robot.report.must_equal "3,1,SOUTH"
+      assert_output(/3,1,SOUTH/) { @robot.report }
     end
 
     it "does not report anything when robot was not placed yet" do
@@ -196,7 +196,7 @@ describe RobotV2 do
       @robot.left
       @robot.move
 
-      @robot.report.must_equal("3,3,NORTH")
+      assert_output(/3,3,NORTH/) { @robot.report }
     end
   end
 end

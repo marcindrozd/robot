@@ -57,7 +57,7 @@ class RobotV2
   def report
     return if !placed
 
-    [x, y, facing].join(",")
+    puts [x, y, facing].join(",")
   end
 
   private
@@ -102,5 +102,5 @@ if __FILE__ == $0
   robot.move
 
   puts "Reporting position..."
-  puts robot.report
+  robot.report
 end
