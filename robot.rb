@@ -36,13 +36,13 @@ end
 def left
   return if @facing.nil?
 
-  DIRECTIONS[(DIRECTIONS.index(@facing) - TURN_SPEED) % DIRECTIONS.length]
+  @facing = DIRECTIONS[(DIRECTIONS.index(@facing) - TURN_SPEED) % DIRECTIONS.length]
 end
 
 def right
   return if @facing.nil?
 
-  DIRECTIONS[(DIRECTIONS.index(@facing) + TURN_SPEED) % DIRECTIONS.length]
+  @facing = DIRECTIONS[(DIRECTIONS.index(@facing) + TURN_SPEED) % DIRECTIONS.length]
 end
 
 def report
