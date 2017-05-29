@@ -1,7 +1,13 @@
-MIN_X = 0
-MIN_Y = 0
-MAX_X = 5
-MAX_Y = 5
+MIN_X = 0.freeze
+MIN_Y = 0.freeze
+MAX_X = 5.freeze
+MAX_Y = 5.freeze
+NORTH = "NORTH".freeze
+EAST = "EAST".freeze
+SOUTH = "SOUTH".freeze
+WEST = "WEST".freeze
+TURN_SPEED = 1.freeze
+DIRECTIONS = [NORTH, EAST, SOUTH, WEST].freeze
 
 @x = nil
 @y = nil
@@ -28,9 +34,15 @@ def move
 end
 
 def left
+  return if @facing.nil?
+
+  DIRECTIONS[(DIRECTIONS.index(@facing) - TURN_SPEED) % DIRECTIONS.length]
 end
 
 def right
+  return if @facing.nil?
+
+  DIRECTIONS[(DIRECTIONS.index(@facing) + TURN_SPEED) % DIRECTIONS.length]
 end
 
 def report

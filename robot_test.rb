@@ -54,27 +54,59 @@ class TestRobot < Minitest::Test
   end
 
   def test_when_robot_faces_north_left_turns_west
+    place(0, 0, "NORTH")
+    left
+
+    assert_equal(0, 0, "WEST")
   end
 
   def test_when_robot_faces_north_right_turns_east
+    place(0, 0, "NORTH")
+    right
+
+    assert_equal(0, 0, "EAST")
   end
 
   def test_when_robot_faces_west_left_turns_south
+    place(0, 0, "WEST")
+    left
+
+    assert_equal(0, 0, "SOUTH")
   end
 
   def test_when_robot_faces_west_right_turns_north
+    place(0, 0, "WEST")
+    right
+
+    assert_equal(0, 0, "NORTH")
   end
 
   def test_when_robot_faces_south_left_turns_east
+    place(0, 0, "SOUTH")
+    left
+
+    assert_equal(0, 0, "EAST")
   end
 
   def test_when_robot_faces_south_right_turns_west
+    place(0, 0, "SOUTH")
+    right
+
+    assert_equal(0, 0, "WEST")
   end
 
   def test_when_robot_faces_east_left_turns_north
+    place(0, 0, "EAST")
+    left
+
+    assert_equal(0, 0, "NORTH")
   end
 
   def test_when_robot_faces_east_right_turns_south
+    place(0, 0, "EAST")
+    right
+
+    assert_equal(0, 0, "SOUTH")
   end
 
   # def test_complex_instructions_1
