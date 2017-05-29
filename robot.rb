@@ -7,6 +7,7 @@ EAST = "EAST".freeze
 SOUTH = "SOUTH".freeze
 WEST = "WEST".freeze
 TURN_SPEED = 1.freeze
+WALK_SPEED = 1.freeze
 DIRECTIONS = [NORTH, EAST, SOUTH, WEST].freeze
 
 @x = nil
@@ -22,14 +23,14 @@ def place(x, y, facing)
 end
 
 def move
-  if @facing == "NORTH" && @y < MAX_Y
-    @y += 1
-  elsif @facing == "SOUTH" && @y > MIN_Y
-    @y -= 1
-  elsif @facing == "EAST" && @x < MAX_X
-    @x += 1
-  elsif @facing == "WEST" && @x > MIN_X
-    @x -= 1
+  if @facing == NORTH && @y < MAX_Y
+    @y += WALK_SPEED
+  elsif @facing == SOUTH && @y > MIN_Y
+    @y -= WALK_SPEED
+  elsif @facing == EAST && @x < MAX_X
+    @x += WALK_SPEED
+  elsif @facing == WEST && @x > MIN_X
+    @x -= WALK_SPEED
   end
 end
 
