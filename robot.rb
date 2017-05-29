@@ -5,34 +5,38 @@ MAX_Y = 5
 
 @x = nil
 @y = nil
-@direction = nil
+@facing = nil
 
-def place(x, y, direction)
+def place(x, y, facing)
+  return if robot_outside_the_grid?(x, y)
+
   @x = x
   @y = y
-  @direction = direction
+  @facing = facing
 end
 
 def move
-  if @direction == "NORTH" && @y < MAX_Y
+  if @facing == "NORTH" && @y < MAX_Y
     @y += 1
-  elsif @direction == "SOUTH" && @y > MIN_Y
+  elsif @facing == "SOUTH" && @y > MIN_Y
     @y -= 1
-  elsif @direction == "EAST" && @x < MAX_X
+  elsif @facing == "EAST" && @x < MAX_X
     @x += 1
-  elsif @direction == "WEST" && @x > MIN_X
+  elsif @facing == "WEST" && @x > MIN_X
     @x -= 1
   end
 end
 
 def left
-  a[(a.index("n") - 1) % a.length]
 end
 
 def right
-  a[(a.index("w") + 1) % a.length]
 end
 
 def report
-  [@x, @y, @direction].join(",")
+  [@x, @y, @facing].join(",")
+end
+
+def robot_outside_the_grid?(x, y)
+  x < MIN_X || x > MAX_X || y < MIN_Y || y > MAX_Y
 end

@@ -5,7 +5,7 @@ class TestRobot < Minitest::Test
   def setup
     @x = nil
     @y = nil
-    @direction = nil
+    @facing = nil
   end
 
   def test_place_puts_robot_on_board
@@ -13,7 +13,7 @@ class TestRobot < Minitest::Test
 
     assert_equal(0, @x)
     assert_equal(0, @y)
-    assert_equal("NORTH", @direction)
+    assert_equal("NORTH", @facing)
   end
 
   def test_other_orders_before_test_are_ignored
@@ -22,10 +22,15 @@ class TestRobot < Minitest::Test
 
     assert_nil(@x)
     assert_nil(@y)
-    assert_nil(@direction)
+    assert_nil(@facing)
   end
 
   def test_cannot_place_robot_outside_of_the_board
+    place(7, 8, "SOUTH")
+
+    assert_nil(@x)
+    assert_nil(@y)
+    assert_nil(@facing)
   end
 
   def test_report_shows_current_robot_position_and_direction
