@@ -3,11 +3,12 @@ require_relative "robot_v2"
 
 describe RobotV2 do
   before do
-    @robot = RobotV2.new
+    @board = Board.new(x: 5, y: 5)
+    @robot = RobotV2.new(board: @board)
   end
 
   describe "#place" do
-    describe "when placed within the grid" do
+    describe "when placed within the board" do
       it "places the robot on the board facing given direction" do
         @robot.place 1, 2, NORTH
 
@@ -18,7 +19,7 @@ describe RobotV2 do
       end
     end
 
-    describe "when placed outside the grid" do
+    describe "when placed outside the board" do
       it "ignores the command" do
         @robot.place 10, 10, NORTH
 

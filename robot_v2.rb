@@ -1,28 +1,22 @@
-NORTH = "NORTH".freeze
-EAST = "EAST".freeze
-SOUTH = "SOUTH".freeze
-WEST = "WEST".freeze
+require_relative "constants"
+require_relative "board"
+require_relative "reportable"
 
 class RobotV2
-  MIN_X = 0.freeze
-  MIN_Y = 0.freeze
-  MAX_X = 5.freeze
-  MAX_Y = 5.freeze
-  TURN_SPEED = 1.freeze
-  WALK_SPEED = 1.freeze
-  DIRECTIONS = [NORTH, EAST, SOUTH, WEST].freeze
+  include Reportable
 
-  attr_accessor :x, :y, :facing, :placed
+  attr_accessor :x, :y, :facing, :placed, :board
 
-  def initialize
+  def initialize(board: Board.new)
     @x = nil
     @y = nil
     @facing = nil
     @placed = false
+    @board = board
   end
 
   def place(x, y, facing)
-    return if robot_outside_the_grid?(x, y)
+    return if board.element_outside_the_board?(x, y)
 
     self.x = x
     self.y = y
@@ -31,13 +25,13 @@ class RobotV2
   end
 
   def move
-    if facing == NORTH && y < MAX_Y
+    if facing == NORTH && y < board.max_y
       self.y += WALK_SPEED
-    elsif facing == SOUTH && y > MIN_Y
+    elsif facing == SOUTH && y > board.min_y
       self.y -= WALK_SPEED
-    elsif facing == EAST && x < MAX_X
+    elsif facing == EAST && x < board.max_x
       self.x += WALK_SPEED
-    elsif facing == WEST && x > MIN_X
+    elsif facing == WEST && x > board.min_x
       self.x -= WALK_SPEED
     end
   end
@@ -52,18 +46,6 @@ class RobotV2
     return if !placed
 
     self.facing = DIRECTIONS[(DIRECTIONS.index(facing) + TURN_SPEED) % DIRECTIONS.length]
-  end
-
-  def report
-    return if !placed
-
-    puts [x, y, facing].join(",")
-  end
-
-  private
-
-  def robot_outside_the_grid?(x, y)
-    x < MIN_X || x > MAX_X || y < MIN_Y || y > MAX_Y
   end
 end
 
