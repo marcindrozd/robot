@@ -1,6 +1,6 @@
-require_relative "constants"
+require_relative "./constants/constants"
+require_relative "./modules/reportable"
 require_relative "board"
-require_relative "reportable"
 
 class RobotV2
   include Reportable

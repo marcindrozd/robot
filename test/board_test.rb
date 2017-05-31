@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require_relative "board"
+require_relative "../board"
 
 describe Board do
   describe "when no params given" do

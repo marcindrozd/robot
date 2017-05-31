@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require_relative "robot_v2"
+require_relative "../robot_v2"
 
 describe RobotV2 do
   before do
