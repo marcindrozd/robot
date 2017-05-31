@@ -2,6 +2,8 @@
 
 ## Version 1
 
+This version can be found in the `non_oo_version` folder.
+
 1. Run `ruby robot.rb` from the console to execute some sample commands
 1. Or start `irb`, then `require_relative robot` and provide your own commands in the following form:
 * place 1, 1, EAST
