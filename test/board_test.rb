@@ -20,38 +20,38 @@ describe Board do
     end
   end
 
-  describe "#element_outside_the_board?" do
+  describe "#element_outside?" do
     before do
       @board = Board.new(x: 3, y: 3)
     end
 
     describe "when given coordinates are smaller than min x" do
       it "returns true" do
-        @board.element_outside_the_board?(-1, 1).must_equal true
+        @board.element_outside?(-1, 1).must_equal true
       end
     end
 
     describe "when given coordinates are larger than max x" do
       it "returns true" do
-        @board.element_outside_the_board?(7, 1).must_equal true
+        @board.element_outside?(7, 1).must_equal true
       end
     end
 
     describe "when given coordinates are smaller than min y" do
       it "returns true" do
-        @board.element_outside_the_board?(1, -2).must_equal true
+        @board.element_outside?(1, -2).must_equal true
       end
     end
 
     describe "when given coordinates are larger than max y" do
       it "returns true" do
-        @board.element_outside_the_board?(1, 8).must_equal true
+        @board.element_outside?(1, 8).must_equal true
       end
     end
 
     describe "when given coordinates are within the range of x and y" do
       it "returns true" do
-        @board.element_outside_the_board?(1, 2).must_equal false
+        @board.element_outside?(1, 2).must_equal false
       end
     end
   end

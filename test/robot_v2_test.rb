@@ -3,8 +3,8 @@ require_relative "../robot_v2"
 
 describe RobotV2 do
   before do
-    @board = Board.new(x: 5, y: 5)
-    @robot = RobotV2.new(board: @board)
+    board = Board.new(x: 5, y: 5)
+    @robot = RobotV2.new(board: board)
   end
 
   describe "#place" do

@@ -5,7 +5,7 @@ require_relative "board"
 class RobotV2
   include Reportable
 
-  attr_accessor :x, :y, :facing, :placed, :board
+  attr_accessor :x, :y, :facing, :placed
 
   def initialize(board: Board.new)
     @x = nil
@@ -16,7 +16,7 @@ class RobotV2
   end
 
   def place(x, y, facing)
-    return if board.element_outside_the_board?(x, y)
+    return if board.element_outside?(x, y)
 
     self.x = x
     self.y = y
@@ -47,6 +47,10 @@ class RobotV2
 
     self.facing = DIRECTIONS[(DIRECTIONS.index(facing) + TURN_SPEED) % DIRECTIONS.length]
   end
+
+  private
+
+  attr_reader :board
 end
 
 # ---------------------

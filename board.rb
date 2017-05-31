@@ -13,7 +13,7 @@ class Board
     @max_y = y
   end
 
-  def element_outside_the_board?(x, y)
+  def element_outside?(x, y)
     x < min_x || x > max_x || y < min_y || y > max_y
   end
 end
