@@ -1,8 +1,8 @@
 class Board
-  MIN_X = 0.freeze
-  MIN_Y = 0.freeze
-  MAX_X = 5.freeze
-  MAX_Y = 5.freeze
+  MIN_X = 0
+  MIN_Y = 0
+  MAX_X = 5
+  MAX_Y = 5
 
   attr_reader :min_x, :min_y, :max_x, :max_y
 
@@ -13,7 +13,7 @@ class Board
     @max_y = y
   end
 
-  def element_outside?(x, y)
-    x < min_x || x > max_x || y < min_y || y > max_y
+  def element_inside?(x, y)
+    x >= min_x && x <= max_x && y >= min_y && y <= max_y
   end
 end

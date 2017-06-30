@@ -1,8 +1,9 @@
-require_relative "./constants/constants"
+require_relative "./constants/robot_settings"
 require_relative "./modules/reportable"
 require_relative "board"
 
-class RobotV2
+class Robot
+  include RobotSettings
   include Reportable
 
   attr_accessor :x, :y, :facing, :placed
@@ -16,7 +17,7 @@ class RobotV2
   end
 
   def place(x, y, facing)
-    return if board.element_outside?(x, y)
+    return unless board.element_inside?(x, y)
 
     self.x = x
     self.y = y
@@ -25,13 +26,15 @@ class RobotV2
   end
 
   def move
-    if facing == NORTH && y < board.max_y
+    return if !placed
+
+    if facing == NORTH && board.element_inside?(x, y + WALK_SPEED)
       self.y += WALK_SPEED
-    elsif facing == SOUTH && y > board.min_y
+    elsif facing == SOUTH && board.element_inside?(x, y - WALK_SPEED)
       self.y -= WALK_SPEED
-    elsif facing == EAST && x < board.max_x
+    elsif facing == EAST && board.element_inside?(x + WALK_SPEED, y)
       self.x += WALK_SPEED
-    elsif facing == WEST && x > board.min_x
+    elsif facing == WEST && board.element_inside?(x - WALK_SPEED, y)
       self.x -= WALK_SPEED
     end
   end
@@ -58,7 +61,7 @@ end
 # ---------------------
 
 if __FILE__ == $0
-  robot = RobotV2.new
+  robot = Robot.new
 
   puts "Placing robot..."
   robot.place 1, 2, EAST
